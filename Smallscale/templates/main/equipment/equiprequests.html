@@ -1,0 +1,16 @@
+{% extends "main/header.html" %}
+
+
+
+{% block content %}
+<center><p><b>Enter the following details to request this equipment from the owner</b></p></center>
+<form method ="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  class="btn" style="background-color:forestgreen; color:white" type ="submit"> send request</button>
+</form>       
+            
+{% endblock %}
+
+
+

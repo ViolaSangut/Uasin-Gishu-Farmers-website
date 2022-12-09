@@ -1,0 +1,20 @@
+{% extends "main/header.html" %}
+
+
+    
+{% block content %}    
+** FOR VET OFFICERS ONLY **
+<p><b>login with your admin password to your account to view your requests form farmers requests</b></p>
+<form method ="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  class="btn" style="background-color:limegreen" type ="submit"> login</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+ 

@@ -1,0 +1,52 @@
+{% extends "main/header.html" %}
+{% block content %} 
+<u><i><center><h5 style="color: forestgreen"> My Equipment Requests</h5></center></i></u>
+{% for status in myequipstatus %} 
+  {% if status.request_status == 0 %}
+    <div class="row">
+    <div class="col s6 m6 l12">
+        <div class="thumbnail">
+            {% if status.equipment_id.equipment_image %}
+                <img src ='{{status.equipment_id.equipment_image.url}}' class=" img-fluid img-thumbnail" width="200" height="200" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <p>Request ID:<b>{{status.id}}</b></p>
+                <p>you requested this <b>{{status.equipment_id.equipment_name}}</b> on <b>{{status.timestamp}}.</b></p>
+                <p style="color: forestgreen"><b>Request Status: PENDING</b></p>
+            </div> 
+        </div>
+    </div>  
+    </div>
+    
+  {% else %}
+    <div class="row">
+    <div class="col s6 m6 l12">
+        <div class="thumbnail">
+            {% if status.equipment_id.equipment_image %}
+                <img src ='{{status.equipment_id.equipment_image.url}}' class=" img-fluid img-thumbnail" width="200" height="200" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <p>Request ID:<b>{{status.id}}</b></p>
+                <p>you requested this <b>{{status.equipment_id.equipment_name}}</b> on <b>{{status.timestamp}}</b></p>
+                <p style="color: forestgreen"><b>Request Status: ACCEPTED</b></p>
+            </div> 
+        </div>
+    </div>  
+    </div>
+    <br>
+    <u><i><center><h5 style="color: forestgreen">Initial payment for requested equipment</h5></center></i></u>
+    <p>To rent this equipment for <b><u> {{status.desired_rental_period}} days </u></b>you have to pay half of the total cost ie  to the equipment owner.
+    <p>Phone number :<b><u>{{status.equipment_id.farmerID.phone_number}},</u></b>
+    <p>Name:<b><u>{{status.equipment_id.farmerID.user.username}}.</u></b></p>
+    <br>
+    <form method ="POST">
+    <p style="color: forestgreen"><i>Equipment initial payment form</i></p>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  class="btn" style="background-color:forestgreen" type ="submit">SUBMIT</button>
+    </form>
+
+    <p>The equipment owner has to confirm this payment for you to get your receipt. Check if your receipt is ready on your account <a class="btn" style="background-color:forestgreen" value="click" onclick="location.href= '/myequipment'">VIEW RECEIPT</a></p>
+  {% endif %}
+{% endfor %}
+{% endblock %} 

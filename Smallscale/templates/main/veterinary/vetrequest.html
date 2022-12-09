@@ -1,0 +1,21 @@
+{% extends "main/header.html" %}
+
+
+    
+{% block content %}  
+
+<p><b>With the veterinary ID number privided for you and your ID number(farmer ID number) send your request to the veterinarian.</b></p>
+<br>
+<form method ="POST" enctype="multipart/form-data" action=''>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button  class="btn" style="background-color:limegreen" type ="submit">submit request</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+ 

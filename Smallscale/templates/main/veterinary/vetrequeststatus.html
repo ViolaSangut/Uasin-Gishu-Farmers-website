@@ -1,0 +1,23 @@
+{% extends "main/header.html" %}
+{% block content %} 
+<center><h5 style="color: forestgreen"> My Equipment Requests</h5></center>
+{% for status in vetreqstatus %} 
+  {% if status.request_status == 0 %}
+    
+    <p>you sent this request on <b>{{status.timestamp}}</b></p>
+    <p>Request Status: <b>PENDING.</b></p>
+    <P><small>Your request is yet to be accepted by the officer. </small></P>
+    <p><a href="/vetsearch" style="color: forestgreen"><u>You can request for another veterinary officer.</u></a></P>
+    <hr>
+  {% else %}
+    
+    <p>Request id :<b> {{status.id}} </b>(You will use this id number to activate your session with the vet officer). </p>
+    <p>you sent this request on <b>{{status.timestamp}}</b></p>
+    <p>Request Status:<b> ACCEPTED.</b></p>
+    <P><i>Your request has been accepted by the officer.pay the consultation fee of 50ksh through m-pesa to the phone number of the officer you requested(displayed on the vet profile)</i></P>
+
+    <p><a href="/paymentconfirm" style="color: forestgreen"><u>click here to activate your session</u></a></P>
+    <hr>
+  {% endif %}
+{% endfor %}
+{% endblock %}

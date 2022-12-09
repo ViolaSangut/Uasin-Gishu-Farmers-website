@@ -1,0 +1,17 @@
+{% load static %}
+<div class =container>
+<div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="{% static 'main/images/land.jpg' %}"></a>
+    <a class="carousel-item" href="#two!"><img src="{% static 'main/images/equip.jpg' %}"></a>
+    <a class="carousel-item" href="#three!"><img src="{% static 'main/images/vet.jpg' %}"></a>
+    <a class="carousel-item" href="#four!"><img src="{% static 'main/images/crops.jpg' %}"></a>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, options);
+  });
+    $(document).ready(function(){
+    $('.carousel').carousel();
+  });</script> 

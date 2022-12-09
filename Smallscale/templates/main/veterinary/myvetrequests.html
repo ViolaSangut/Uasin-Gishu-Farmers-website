@@ -1,0 +1,18 @@
+{% extends "main/header.html" %}
+{% block content %} 
+{% for request in vetreq %}
+  {% if request.request_status == 0 %}
+    <i><center><h5 style="color:forestgreen" >Pending Requests </h5></center><i>
+    <br>
+    <p>You got a request from: {{request.My_FarmerID.user.username}}</p>
+    <p>This request was sent on: <b>{{request.timestamp}}</b></p>
+    <button  class="btn" style=" background-color:forestgreen" type ="submit">ACCEPT REQUEST</button>
+    <hr>
+  {% else %}
+    <i><center><h5 style="color:forestgreen" >Accepted Requests </h5></center><i>
+    <br>
+    <p>You got accepted request from: {{request.My_FarmerID.user.username}}</p>
+    <p>This request was sent on: <b>{{request.timestamp}}</b></p>
+  {% endif %}
+{% endfor %}
+{% endblock %}

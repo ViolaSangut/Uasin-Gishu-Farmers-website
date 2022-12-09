@@ -1,0 +1,23 @@
+{% extends "main/header.html" %}
+
+
+    
+{% block content %}  
+
+<center><p><b>SESSION ACTIVATION</b></p></center>
+<p><i>Enter your m-pesa code for the payment of the consultation fee and your message to the vet. <a href="/myveterinary" style="color:forestgreen"><u>check for the reply in your account in the VETERINARY SECTION.</u></a></i> </p>
+
+<br>
+<form method ="POST" enctype="multipart/form-data" action=''>
+	{% csrf_token %}
+	{{form.as_p}}
+	<center><button  class="btn" style="background-color: forestgreen" type ="submit">SEND MESSAGE</button></center>
+</form>
+
+
+{% endblock %}
+
+
+
+
+ 

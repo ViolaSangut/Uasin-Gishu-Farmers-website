@@ -1,0 +1,62 @@
+{% extends "main/header.html" %}
+
+
+
+
+{% block content %} 
+
+<p><h6>VETERINARY HELP SEARCH</h6></p>
+<P>send messages to agricultural officers who can help you with various problems you might ba facing  </P>
+<P><i>Below is a cartegory of the veterinary services we provide for farmers.</i></p>
+
+<p>select the cartegory of issue you are facing in your farming activities to get a veterinary officer with that specialization.</P>
+<form method='GET' action=''>
+<input type='text'name="q" value='{{request.GET.q}}' placeholder='search vet cartegory'/>
+<input type='submit' value='SEARCH'/></form> 
+<br>
+<P><h5><i><b>SEARCH RESULTS.</i></b></h5></P>
+<br>
+{% for vet in vet_list %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="thumbnail">
+            {% if vet.image %}
+                <img src ='{{vet.image.url}}' class=" img-fluid img-thumbnail" width="300" height="300" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <h4>{{vet.Vet_Name}} specialist in {{vet.Specialization}}</h4>
+                <p><b>Vet_ID :</b> {{vet.id}}</p>
+                <p>Vet phone number:{{vet.Mobile_Number}}. Email:</u>{{vet.Email_address}}</u></p>
+                <p> They are located in <b>{{vet.subcounty}}</b> subcounty, <b>{{vet.ward}} ward</b></p>                
+                <p><a onclick="location.href= '/vetrequests'" class="btn-primary green" role="button">SEND REQUEST</a></p>
+                <hr/>
+                <br>
+            </div> 
+        </div>
+    </div>  
+</div> 
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if vet_list.has_previous %}
+            <a href="?{{page_request_var}}">&laquo; first</a>
+            <a href="?{{page_request_var}}={{ vet_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ vet_list.number }} of {{ vet_list.paginator.num_pages }}.
+        </span>
+
+        {% if vet_list.has_next %}
+            <a href="?{{page_request_var}}={{ vet_list.next_page_number }}">next</a>
+            <a href="?{{page_request_var}}={{ vet_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>         
+
+
+            
+{% endblock %}
+
+
+

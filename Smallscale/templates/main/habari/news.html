@@ -1,0 +1,48 @@
+{% extends "main/header.html" %}
+{% load static %}
+     
+{% block content %} 
+visit our <a href ="/" style="color: forestgreen"><strong>HOMEPAGE</strong></a>
+<div class="row">
+
+    <div class="col s8">
+
+      <p><img src="{% static 'main/images/hots.png' %}" width ="400" height="300" alt ="topstory"></p>
+      <p><b>Top story this week</b></p>
+      <p><a href="/topstories" style="color: forestgreen"><u><h5>Ups and downs of pioneering agriculture.</h5></u></a></p>
+      <p><i>DONALD THOMAS came to Kenya as an expert and stayed on after independence Together with other important people they formed the basis of agriculture in Kenya.</i><small>(click the link above read more...)</small></p>
+      <br>
+      <i><h5 style="color: forestgreen"><b>FARMERS FORUM</b></h5></i>
+      <p><b>Our weekly topic: Usage of smart irrigation methods.</b></p>
+      <P>Have you used smart irrigation in your farm before or planning to venture into it? Share your experience  with other farmers  by leaving your comment below. </P>
+      <form method ="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button  class="btn" style="background-color:forestgreen " type ="submit">submit</button>
+        <p><a href="/Comments" style="color: forestgreen"><u>View Other Comments</u></a></p>
+      </form>
+
+
+    </div>
+      
+    <div class="col s4"style="background-color:forestgreen ">
+      <br>
+      <h5 style="color: white"><center><i>AGRI-TECH NEWS</i></center></h5>
+      <center><img src="{% static 'main/images/Agritech.jpg' %}" width ="200" height="200" alt ="topstory"></center>
+      <p style="color: white">This week on the agritech sector , we focus with smart irrigation methods being used by people around kenya.</p>
+      <center><P><a class="btn" style="color: white" value="click" onclick="location.href= '/equipmentregister'">
+              <span>READ MORE</span></a></P></center>
+      <hr >
+      <br>
+      <h6 style="color: white"><i> Other Agriculture County News...</i></h6>
+      <p><a href="/topstories" style="color: white"><u><h5>Chemusian farm title deeds</h5></u></a></p>
+      <p style="color: white">H.E Governor Jackson Mandago with cabinet secretary on land issues land title deed to the residents of chemusian farm.</p>
+      <hr>
+  </div>
+
+{% endblock %}
+
+
+
+
+ 

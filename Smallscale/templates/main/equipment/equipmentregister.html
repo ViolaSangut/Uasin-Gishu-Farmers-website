@@ -1,0 +1,22 @@
+{% extends "main/header.html" %}
+
+
+
+
+{% block content %} 
+
+<p><h6>FARM EQUIPMENT REGISTER</h6></p>
+<P>register your equipment with us  and earn money when other farmers hire them</P>
+<P><i>below, enter the equipment details.</i></P>
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  class="btn" style="background-color:yellow; color:blue" type ="submit">save</button>
+</form>
+
+
+            
+{% endblock %}
+
+
+

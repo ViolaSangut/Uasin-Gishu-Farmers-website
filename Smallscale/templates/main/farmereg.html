@@ -1,0 +1,21 @@
+{% extends "main/header.html" %}
+
+
+    
+{% block content %}  
+
+<p><b>Hello, welcome  Inua Mkulima Mdogo. To access  any of our services,you have to create a farmer's profile below first.</b></p>
+<br>
+<form method ="POST" enctype="multipart/form-data" action=''>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button  class="btn" style="background-color:yellow; color:blue" type ="submit"> register</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+ 

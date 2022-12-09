@@ -1,0 +1,53 @@
+{% extends "main/header.html" %}
+
+{% load static %}
+
+
+{% block content %} 
+{% for rep in  queryset %}
+<p style="color: forestgreen"><b>You sent the following issue to the vet officer:</b></p>
+<div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <span ><p>{{rep.Message_ID.my_question}}</p>
+               <p><small><i>{{rep.Message_ID.request_id.timestamp}}:</i></small></p>
+        </span>
+      </div>
+    </div>
+</div>
+<p style="color: forestgreen"><b>Vet's reply:</b></p>
+<div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <span ><p>{{rep.reply}}</p>
+               <br>
+               <p><a href="/paymentconfirm" style="color: forestgreen"><u>CLICK HERE</u></a> to send another message to this officer vetID: <b>{{rep.Message_ID.request_id.Vet_ID}}</b></p>
+               <p><small><i>{{rep.timestamp}}:</i></small></p>
+        </span>
+      </div>
+    </div>
+</div>
+<br>
+<h6 style="color: forestgreen"><i>Your receipt for this session.</i></h6>
+<center><div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <span ><img src="{% static 'main/images/logo2.PNG' %}" width ="100" height="100" alt ="topstory">
+               <p><i>Session ID:{{rep.Message_ID.request_id.id}}</i></p>
+               <P> Dear farmer,You were served by:<b>{{rep.Message_ID.request_id.Vet_ID.Vet_Name}}</b><small>vetID: <b>{{rep.Message_ID.request_id.Vet_ID}}</b></small></P>
+               <p>Specialist in:<b>{{rep.Message_ID.request_id.Vet_ID.Specialization}}</b></p>
+               <p>Email address:<b>{{rep.Message_ID.request_id.Vet_ID.Email_address}}</b></p>
+               <p>Phone number:<b>{{rep.Message_ID.request_id.Vet_ID.Mobile_Number}}</b></p>
+               <small><i>Thank you and welcome again!</i></small>
+        </span>
+      </div>
+    </div>
+</div></center>
+<br>
+<h6 style="color: forestgreen"><i>RATE THIS OFFICER.<small>(optional).</small></i></h6>
+<p>Not happy with this reply? search for another vet<u><a href="/vetsearch" style="color: forestgreen"> HERE</a></u></p>
+{% endfor %}  
+{% endblock %}
+
+
+

@@ -1,0 +1,17 @@
+{% extends "main/header.html" %}
+
+
+    
+{% block content %}    
+<form method ="POST"  enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  {{farmer_form.as_p}}
+  <button  class="btn" style="background-color:limegreen " type ="submit"> register</button>
+</form>
+
+if you already have an account , <a href ="/login"><strong>login</strong></a>
+{% endblock %}
+
+
+

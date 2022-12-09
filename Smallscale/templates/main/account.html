@@ -1,0 +1,74 @@
+{% extends "main/header.html" %}
+
+
+
+{% load static %}
+{% block content %} 
+<h5 style="color: forestgreen"><i> Your Farmer Profile</i></h5>
+  <div class="row">
+    <div class="col s6 m6 l12">
+        <div class="thumbnail">
+            {% if user.farmers.image %}
+                <img src ='{{user.farmers.image.url}}' class=" img-fluid img-thumbnail" width="200" height="200" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <p>User Name: <b>{{user.username}}.</b></p>
+                <p>National ID number: <b>{{user.farmers.National_ID}}.</b> registered on <b>{{user.farmers.timestamp}}.</b></p>
+                <p>Phone number: <b>{{user.farmers.phone_number}}.</b></p>
+                <p>Subcounty: <b>{{user.farmers.subcounty}}.</b></p>
+                
+            </div> 
+        </div>
+    </div>  
+  </div>
+<hr>
+<br>
+  
+  
+<div class="row">
+  <div class="col s4">  
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{% static 'main/images/equip.jpg' %}">
+      </div>
+      <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">EQUIPMENT</span>
+      <P> Do you want to view requests for your equipment, get updated on the status of your requests to other farmers, or view payment from farmers for your equipment?</P>
+      <p><a onclick="location.href= '/myequipment'">CLICK HERE</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s4"> 
+  <br> 
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{% static 'main/images/land.jpg' %}">
+      </div>
+      <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">LANDS</span>
+      <P> Do you want to view requests for your land or get updated on the status of your requests to other farmers?</P>
+      <p><a onclick="location.href= '/mylands'">CLICK HERE</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s4"> 
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="{% static 'main/images/vet.jpg' %}">
+      </div>
+      <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">VETERINARY SERVICES</span>
+      <P> Do you want to view replies from vet officers or get updated on the status of your requests to them?</P>
+      <p><a onclick="location.href= '/myveterinary'">CLICK HERE</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+ 

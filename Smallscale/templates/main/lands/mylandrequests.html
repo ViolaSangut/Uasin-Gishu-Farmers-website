@@ -1,0 +1,22 @@
+{% extends "main/header.html" %}
+{% block content %} 
+{% for request in landreq %}
+    {% if request.request_status == 1 %}
+    <i><center><h5 style="color: forestgreen"> Accepted requests </h5></center></i>
+    <i><p>Requeat_ID:<b> {{request.id}}</b></p></i>
+    <p>This land was requested on: <b>{{request.timestamp}}</b> by <b>{{request.My_FarmerID.user.username}}.</b> </p>
+    <p>They are located in:<b> {{request.My_FarmerID.subcounty}}.</b> </p>
+    <P>desired rental period:<b> {{request.desired_lease_period}} months.</b>
+    <hr>
+    <br>
+  {% else %}
+    <i><center><h5 style="color: forestgreen"> Pending requests </h5></center></i>
+    <i> <p>Requeat_ID:<b> {{request.id}}</b></p></i>
+    <p>This equipment was requested on: <b>{{request.timestamp}}</b> by <b>{{request.My_FarmerID.user.username}}.</b> </p>
+    <p>They are located in:<b> {{request.My_FarmerID.subcounty}}.</b> </p>
+    <P>desired rental period:<b> {{request.desired_lease_period}} months.</b></P>
+    <button  class="btn" style="background-color:forestgreen" type ="submit">ACCEPT REQUEST</button>
+    <hr>
+  {% endif %}
+{% endfor %}
+{% endblock %}

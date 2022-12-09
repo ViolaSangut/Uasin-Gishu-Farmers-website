@@ -1,0 +1,81 @@
+{% extends "main/header.html" %}
+{% load static %}
+
+    
+{% block content %} 
+
+<div class="row">
+  <div class="col s3">
+    <div class="card-panel large">
+      <span class>
+        <center><i class="material-icons large">rv_hookup</i></center>
+        <p><h6><center><strong>FARM EQUIPMENT AND MACHINERY</strong></center></h6></p>
+        <center><P><i>Can't affford to buy that tractor? worry not! hire equipment from other farmers around you for smalll fee.</i></P></center>
+        <center><P><a class="btn green" value="click" onclick="location.href= '/equipsearch'">
+                   <span>FIND</span>
+                   <i class ="material-icons right">search</i></a></P></center>
+        <hr>
+        <center><P><i>register your equipment with us and make money through renting them out to other farmers.</i></P></center>
+        <center><P><a class="btn green" value="click" onclick="location.href= '/equipmentregister'">
+                   <span>REGISTER</span>
+                   <i class ="material-icons right">mode_edit</i></a></P></center>
+      </span>
+    </div>
+  </div>
+    
+  
+  <div class="col s3">
+    <div class="card-panel large">
+      <span class>
+        <center><i class="material-icons large">landscape</i></center>
+        <p><h6><center><strong>LAND FOR HIRE</strong></center></h6></p>
+        <center><P><i>Find land for hire anywhere around Uasin Gishu!</i></P></center>
+        <center><P><a class="btn green" value="click" onclick="location.href= '/landsearch'">
+                   <span>FIND</span>
+                   <i class ="material-icons right">search</i></a></P></center>
+        <hr>
+        <center><P><i>Register your land with us if you are intending to lease out your land.</i></P></center>
+        <center><P><a class="btn green" value="click" onclick="location.href='/landsregister'">
+                   <span>REGISTER</span>
+                   <i class ="material-icons right">mode_edit</i></a></P></center>
+      </span>
+    </div>
+  </div>
+
+
+  <div class="col s3">
+    <div class="card-panel large">
+      <span class>
+        <center><i class="material-icons large">local_hospital</i></center>
+        <p><strong><center>VETERINARY SERVICES</center></strong></p>
+        <center><P><i>Access vet help quickly and find advice and help to your farming problems!</i></P></center>
+        <center><P><a class="btn green" value="click" onclick="location.href= '/vetsearch'">
+                   <span>FIND VET</span>
+                   <i class ="material-icons right">search</i></a></P></center>
+                   <br>
+        <center><P><i>VET services are offered at a small consultatoin fee.</i></P></center>
+       
+      </span>
+    </div>
+  </div>
+
+
+  <div class="col s3">
+    <div class="card-panel large">
+      <span class>
+        <center><i class="material-icons large">place</i></center>
+        <p><strong><center>LOCATE AGRO-VET</center></strong></p>
+         <center><P><i>locate the closest agro-vet stores around  you now!</i></P></center>
+        <center><P><a href ="#" class="btn green">
+                   <span>FIND AGRO-VET</span>
+                   <i class ="material-icons right">search</i></a></P></center>
+                   <br>
+      </span>
+    </div>
+  </div>
+</div>
+{% include "main/includes/footer.html" %}
+  {% endblock %}
+
+
+

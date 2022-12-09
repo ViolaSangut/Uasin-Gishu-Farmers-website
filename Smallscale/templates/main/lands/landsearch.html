@@ -1,0 +1,50 @@
+{% extends "main/header.html" %}
+{% block content %} 
+<p><h4>LAND SEARCH</h4></p>
+<P>Welcome!Several farmers around Uasin Gishu have posted their lands and are ready to be rented by you! </P>
+<P><i> find land suitable for you by entering the prefered location of land you want below</i></P>
+<form method='GET' action=''>
+<input type='text'name="q" value='{{request.GET.q}}' placeholder='search land location'/>
+<input type='submit' value='search'/></form> 
+<br>
+<center><P><h5><i><b>search results.</i></b></h5></P></center>
+<br>
+{% for land in lands_list %}
+<center><div class="row">
+    <div class="col-sm-12">
+        <div class="thumbnail">
+            {% if land.land_image %}
+                <img src ='{{land.land_image.url}}' class=" img-fluid img-thumbnail" width="300" height="300" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <h4>,<b>{{land.land_size}} acres</b>of land in<b> {{land.land_location}}</b><small>({{land.timestamp}})</small></h4>
+                <p><b>Land description for the owner:</b> {{land.more_info}}</p>
+                <p><i>This land goes for {{land.price}} PER ACRE </i></p>
+                <p><b>Land_ID:</b> {{land.id}}    <small>**will use this to request this piece of land**</small></p>
+                <p><a onclick="location.href= '/landrequests'" class="btn-primary green" role="button">SELECT THIS LAND</a></p>
+                <hr/>
+                <br>
+            </div> 
+        </div>
+    </div>  
+</div> </center>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if lands_list.has_previous %}
+            <a href="?{{page_request_var}}">&laquo; first</a>
+            <a href="?{{page_request_var}}={{ lands_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ lands_list.number }} of {{ lands_list.paginator.num_pages }}.
+        </span>
+
+        {% if lands_list.has_next %}
+            <a href="?{{page_request_var}}={{ lands_list.next_page_number }}">next</a>
+            <a href="?{{page_request_var}}={{ lands_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>         
+
+{% endblock %}

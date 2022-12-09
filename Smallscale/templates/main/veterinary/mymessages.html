@@ -1,0 +1,28 @@
+{% extends "main/header.html" %}
+{% block content %} 
+{% for msg in message %}
+    <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <span>
+            <center><b><h5 style="color: forestgreen">FARMER PAYMENT AND MESSAGE</h5></b></center>
+            <p>You have received payment <u><b>{{msg.MPESA_code}}</b></u> from <b> {{msg.request_id.My_FarmerID.user.username}}.</b></p>
+            <P>Phone Number: <b><u>{{msg.request_id.My_FarmerID.phone_number}}.</u></b></P>
+            <p>The farmerID is:<b> {{msg.request_id.My_FarmerID}}</b></p>
+            <p>The Message_ID is:<b>{{msg.id}}</b></p>
+            <P style="color: forestgreen"><b><i>Farmers message:</i></b></P>
+            <p>{{msg.my_question}}</p>
+            <br>
+            <P style="color: forestgreen"><b><i>Reply:</i></b></P>
+            
+            <form method ="POST" enctype="multipart/form-data" action=''>
+                {% csrf_token %}
+                {{form.as_p}}
+                <center><button  class="btn" style="background-color: forestgreen" type ="submit">SEND REPLY</button></center>
+            </form> 
+        </span>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

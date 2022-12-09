@@ -1,0 +1,39 @@
+{% extends "main/header.html" %}
+
+
+{% load static %}
+
+{% block content %} 
+{% for receipt in rental %}
+  {% if receipt.payment_status == 0 %}
+    <p> Request ID: <b>{{receipt.request_ID}}.</b><p>
+    <p> You made payment for a<b> {{receipt.request_ID.equipment_id.equipment_name}}</b> on <b>
+    {{receipt.timestamp}} </b></p>
+    <p>Your payment is yet to be confirmed by the equipment owner</p> 
+  {% else %}
+    <p> Request ID: <b>{{receipt.request_ID}}.</b><p>
+    <p> You made payment for a <b>{{receipt.request_ID.equipment_id.equipment_name}}</b> on <b>
+    {{receipt.timestamp}} </b></p>
+    <p>Your payment has been confirmed by the equipment owner</p>
+    <br>
+    <i><p style="color: forestgreen"> Your payment receipt:</p></i>
+    <center><div class="row">
+      <div class="col s12 m12 l12">
+        <div class="card-panel">
+          <span>
+             <img src="{% static 'main/images/logo2.PNG' %}" width ="100" height="100" alt ="topstory">
+             <i><p>Dear {{user.username}},</p></i>
+             <p>You made an initial payment of for the above equipment.</p>
+             <p>Date of payment: <b>{{receipt.timestamp}}.</b></p>
+
+
+          </span>
+        </div>
+      </div>
+    </div><center>     
+  {% endif %}
+  {% endfor %}         
+{% endblock %}
+
+
+

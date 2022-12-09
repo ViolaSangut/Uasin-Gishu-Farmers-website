@@ -1,0 +1,66 @@
+{% extends "main/header.html" %}
+{% load static %}
+{% block content %} 
+<i><center><h5 style="color: forestgreen"> My Land Requests</h5></center></i>
+<br>
+<br>
+{% for status in mylandstatus %} 
+  {% if status.request_status == 0 %}
+    <center><div class="row">
+    <div class="col s6 m6 l12">
+        <div class="thumbnail">
+            {% if status.Land_id.land_image %}
+                <img src ='{{status.Land_id.land_image.url}}' class=" img-fluid img-thumbnail" width="200" height="200" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <p>Request ID:<b>{{status.id}}</b></p>
+                <p>you requested this land(<b>{{status.Land_id}}</b>) on <b>{{status.timestamp}}.</b></p>
+                <p>Land Location:<b>{{status.Land_id.land_location}}.</b> <small>
+                {{status.Land_id.land_size}} acres</small> </p>
+                <p style="color: forestgreen"><b>Request Status: PENDING</b></p>
+                <p>You can request for another land <a href="/landsearch" style="color: forestgreen">HERE</a></p>
+                <hr>
+            </div> 
+        </div>
+    </div>  
+    </div></center>
+    <br>
+    <br>
+  {% else %}
+    <center><div class="row">
+    <div class="col s6 m6 l12">
+        <div class="thumbnail">
+            {% if status.Land_id.land_image %}
+                <img src ='{{status.Land_id.land_image.url}}' class=" img-fluid img-thumbnail" width="200" height="200" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <p>Request ID:<b>{{status.id}}</b></p>
+                <p>you requested this land(<b>{{status.Land_id}}</b>) on <b>{{status.timestamp}}.</b></p>
+                <p>Land Location:<b>{{status.Land_id.land_location}}.</b> <small>{{status.Land_id.land_size}} acres</small> </p>
+                <p style="color: forestgreen"><b>Request Status: ACCEPTED</b></p>
+            </div> 
+        </div>
+    </div>  
+    </div></center>
+    <br>
+    <br>
+    <p> <i>Find your receipt below...</i></p>
+    <center><div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card-panel">
+                         <span>
+                            <img src="{% static 'main/images/logo2.PNG' %}" width ="100" height="100" alt ="topstory">
+                            <i><p>Dear {{user.username}},</p></i>
+                            <p>You have booked this land <b>Land_id:{{status.Land_id}}</b> from <b>{{status.Land_id.farmerID.user.username}}.</b></p>
+                            <p>Land Location:<b>{{status.Land_id.land_location}}.</b></p>
+                            <p>Land owner email-address:<b>{{status.Land_id.farmerID.user.email}} </b></p>
+                            <p>Land owner phone number:<b>{{status.Land_id.farmerID.phone_number}} </b></p>
+                            <small>** Follow up with the land owner to finish the legal procedures of leasing this land**</small>
+                        </span>
+                </div>
+            </div>
+     </div></center>
+
+  {% endif %}
+{% endfor %}
+{% endblock %}

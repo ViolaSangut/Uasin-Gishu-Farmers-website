@@ -1,0 +1,58 @@
+{% extends "main/header.html" %}
+
+
+
+
+{% block content %} 
+
+<p><h4>FARM EQUIPMENT SEARCH</h4></p>
+<P>Looking for farm tools and equipment to hire?, Search for them below to view the available ones that were posted by other farmers </P>
+
+<form method='GET' action=''>
+<input type='text'name="q" value='{{request.GET.q}}' placeholder='search equipment'/>
+<input type='submit' value='search'/></form> 
+<br>
+<P><h5><i><b>search results.</i></b></h5></P>
+<br>
+{% for equip in equip_list %}
+<center><div class="row">
+    <div class="col-sm-12">
+        <div class="thumbnail">
+            {% if equip.equipment_image %}
+                <img src ='{{equip.equipment_image.url}}' class=" img-fluid img-thumbnail" width="300" height="300" alt="Responsive image"/>
+            {% endif %}
+            <div class="caption">
+                <h4>{{equip.equipment_name}}<small>({{equip.timestamp}})</small></h4>
+                <p><b>Equipment current status:</b> {{equip.Equipmemt_current_status}}</p>
+                <p><i>This equipment goes for <b>{{equip.price_per_day}} PER DAY </b></i></p>
+                <p> the equipment id is:<b> {{equip.id}}</b></p>
+                <p><a onclick="location.href= '/equiprequests'" class="btn-primary green" role="button">SELECT</a></p>
+                <hr/>
+                <br>
+            </div> 
+        </div>
+    </div>  
+</div></center>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if equip_list.has_previous %}
+            <a href="?{{page_request_var}}">&laquo; first</a>
+            <a href="?{{page_request_var}}={{ equip_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ equip_list.number }} of {{ equip_list.paginator.num_pages }}.
+        </span>
+
+        {% if equip_list.has_next %}
+            <a href="?{{page_request_var}}={{ equip_list.next_page_number }}">next</a>
+            <a href="?{{page_request_var}}={{ equip_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>         
+            
+{% endblock %}
+
+
+

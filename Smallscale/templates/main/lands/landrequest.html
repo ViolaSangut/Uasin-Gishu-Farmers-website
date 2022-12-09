@@ -1,0 +1,13 @@
+{% extends "main/header.html" %}
+{% block content %}
+<p> <b>Fill in the form below to request the land you selected.</b></p>
+<p><small>** The land_ID is displayed for you in the land profile **</small></p>
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button  class="btn" style="background-color:forestgreen; color:white" type ="submit">send request</button>
+<br> 
+ 
+    
+</form>
+{% endblock %}

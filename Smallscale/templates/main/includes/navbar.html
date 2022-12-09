@@ -1,0 +1,26 @@
+<nav>
+    <div class="nav-wrapper" style="background-color:forestgreen">
+      <a href="/" class="brand-logo"><B><i>Mkulima Mdogo Initiative</i></B></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">home</a></li>
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <li>{{user.username}}</a></li>
+                <li><a href="/logout">logout</a></li>
+            {% else %}
+                <li><a href="/account">{{user.username}}</a></li>
+                <li><a href="/account">FarmerID:{{user.farmers.id}}</a></li>
+                <li><a href="/news">news&forums</a></li>
+                <li><a href="/logout">logout</a></li>
+            {% endif %}
+        {% else %}
+        <li><a href="/register"> Farmers_signup</a></li>
+        <li><a href="/login">Farmers_login</a></li>
+        <li><a href="/vet">Vet_account</a></li>
+        <li><a href="/about">about</a></li>
+        <li><a href="/news">news&forums</a></li>
+        
+        {% endif %}
+      </ul>
+    </div>
+</nav>
